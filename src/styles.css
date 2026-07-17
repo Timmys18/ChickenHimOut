@@ -1,0 +1,30 @@
+:root {
+  font-family: Inter, ui-rounded, "Arial Rounded MT Bold", system-ui, sans-serif;
+  color: #fff8e7;
+  background: #031024;
+  font-synthesis: none;
+  touch-action: none;
+}
+
+* { box-sizing: border-box; }
+html, body, #game { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: radial-gradient(circle at 50% 20%, #183d6b, #031024 70%); }
+canvas { display: block; margin: auto; touch-action: none; }
+
+#rotate-message {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  place-items: center;
+  padding: 2rem;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.35rem;
+  color: #fff4da;
+  background: #071a38;
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  #rotate-message { display: grid; }
+}

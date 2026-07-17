@@ -1,0 +1,19 @@
+node_modules/
+.npm/
+.tmp/
+.gradle/
+dist/
+qa/
+releases/
+*.log
+.DS_Store
+android/.gradle/
+android/local.properties
+android/app/build/
+ios/App/DerivedData/
+
+# Production-ready runtime derivatives are tracked; large source sheets stay
+# in the independently checksummed art-source archive.
+public/assets/production/**/*-source.png
+public/assets/production/hero/hero-poses.png
+public/assets/production/hero/hero-poses-chroma.png
