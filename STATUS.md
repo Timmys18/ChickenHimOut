@@ -2,7 +2,7 @@
 
 ## Active stage
 
-`00 — Recovery and baseline`
+`00 — Recovery and baseline (completed)`
 
 No gameplay, balance, mission, or visual redesign work is authorized during
 this stage.
@@ -24,7 +24,7 @@ this stage.
 - [x] Initialize local Git on branch `main`.
 - [x] Run TypeScript, production build, and dependency audit checks.
 - [x] Record and tag the recovered baseline commit.
-- [ ] Create and push to a private remote repository.
+- [x] Create and push to a private remote repository.
 - [x] Save independent persistent recovery copies.
 - [x] Verify commit, tag, archive hashes, and restoration instructions.
 
@@ -36,11 +36,19 @@ this stage.
 - Isolated Git-bundle restore: clone, `npm ci`, `npm test`, and
   `npm run build` passed, 2026-07-16
 
-## Current blocker
+## Remote verification
 
-The private GitHub repository has not yet been created. This environment has
-Git access but no authenticated repository-creation capability. The complete
-project is nevertheless recoverable from the independent Stage 00 set.
+- Repository: `Timmys18/ChickenHimOut`
+- Visibility: private
+- Default branch: `main`
+- Verified import commit:
+  `4a3f1dee6c7f028404d2fb90d1f231adce6274a7`
+- Imported files: 115
+- Imported unique Git blobs: 111
+- Control comparison: seven representative source, art, Android, iOS, and
+  recovery files matched the local checkpoint by Git SHA.
+
+Stage 00 has no remaining blocker.
 
 ## Next stage
 

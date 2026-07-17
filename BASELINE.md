@@ -52,3 +52,19 @@ The recovery set is stored under
 All five hashes were checked after archive creation. The Git bundle was cloned
 into a new empty directory; `npm ci`, `npm test`, and `npm run build` then
 completed successfully from that restored copy.
+
+## Private GitHub checkpoint
+
+- Repository: `https://github.com/Timmys18/ChickenHimOut`
+- Visibility verified: private
+- Default branch: `main`
+- Verified import commit:
+  `4a3f1dee6c7f028404d2fb90d1f231adce6274a7`
+- Imported tree: `2a55765dda6ca2b4f9ac11e8a8b2f8312376842f`
+- Imported files: 115
+- Imported unique blobs: 111
+- Closing local tag: `checkpoint-00-github`
+
+The imported tree exactly matches local durable checkpoint commit
+`66908d239e631e029a526516664bc2b1cf8d4db3`. Seven representative files were
+also fetched back from GitHub and matched by Git SHA.
