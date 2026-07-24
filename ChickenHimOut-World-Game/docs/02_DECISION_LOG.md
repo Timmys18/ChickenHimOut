@@ -106,3 +106,38 @@
 
 - **Status:** APPROVED
 - **Decision:** target 12+/Teen, минимум текста, визуальный юмор, без длинных реплик и реалистичной жестокости.
+
+## DEC-018 — Старый technical baseline отменён
+
+- **Status:** SUPERSEDED
+- **Date:** 2026-07-24
+- **Decision:** `docs/11_TECHNICAL_ARCHITECTURE_DECISION.md` больше не является рабочей архитектурой.
+- **Reason:** содержал несколько чрезмерно стандартных и консервативных решений, не соответствующих требованию current top-tier.
+
+## DEC-019 — Current-production technology rule
+
+- **Status:** APPROVED PROCESS RULE
+- **Date:** 2026-07-24
+- **Decision:** используется наиболее современное production-ready решение с доказуемым преимуществом для продукта или производства. Experimental допускается только как изолированный spike с rollback.
+- **Impact:** "стабильно", "обычно" и "проще" не являются достаточным обоснованием.
+
+## DEC-020 — Unity 6.5 baseline
+
+- **Status:** PROPOSED IN GATE 01 REWORK
+- **Decision:** initial editor baseline — Unity `6000.5.4f1` + URP, Render Graph enabled, compatibility mode prohibited.
+- **Note:** final approval follows revised Gate 01 review.
+
+## DEC-021 — Modern hybrid runtime
+
+- **Status:** PROPOSED IN GATE 01 REWORK
+- **Decision:** authoritative GameObject/PhysX gameplay combined with Burst/Jobs and optional benchmark-driven ECS for scalable ambient systems.
+
+## DEC-022 — Modern experience stack
+
+- **Status:** PROPOSED IN GATE 01 REWORK
+- **Decision:** Input System + EnhancedTouch, Cinemachine 3.1.x, UI Toolkit/UI Builder, native iOS/Android haptics, Playables/Animation Rigging and FMOD evaluation.
+
+## DEC-023 — 60 FPS / 60 Hz main baseline
+
+- **Status:** PROPOSED IN GATE 01 REWORK
+- **Decision:** Main tier targets stable 60 FPS and 60 Hz physics; optional 120 FPS on High; 30 FPS only supported floor or emergency thermal state.
