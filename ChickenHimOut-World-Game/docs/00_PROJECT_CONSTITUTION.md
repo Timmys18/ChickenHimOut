@@ -1,9 +1,10 @@
 # Project Constitution
 
 **Project:** ChickenHimOut — World Game  
-**Status:** REVIEW  
+**Status:** ACCEPTED  
 **Owner:** Game Director / CTO  
-**Approval:** Product Owner / Creative Director
+**Approval:** Product Owner / Creative Director  
+**Accepted:** 2026-07-24
 
 ## 1. Самостоятельность проекта
 
