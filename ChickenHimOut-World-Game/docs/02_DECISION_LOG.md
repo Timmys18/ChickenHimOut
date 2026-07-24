@@ -74,9 +74,35 @@
 - **Decision:** Wall, Greenland, Tariffs, Count Again, TikTok, The Prize.
 - **Impact:** остальные темы проходят отдельный фильтр глобальной узнаваемости.
 
-## DEC-012 — Первая рекомендуемая vertical slice миссия
+## DEC-012 — Первая vertical slice миссия
 
-- **Status:** PROPOSED
-- **Decision:** использовать The Wall как первую полноценную демонстрационную миссию.
+- **Status:** APPROVED
+- **Decision:** The Wall используется как первая полноценная демонстрационная миссия.
 - **Reason:** сильнейшая узнаваемость и лучший охват физических, визуальных и системных требований.
-- **Approval required:** Yes.
+
+## DEC-013 — Целевые платформы и формат
+
+- **Status:** APPROVED
+- **Decision:** mobile-first iOS/Android, landscape. PC/Web используются для development/review builds.
+- **Impact:** input, camera, UI и performance проектируются под мобильный landscape.
+
+## DEC-014 — Business model
+
+- **Status:** APPROVED
+- **Decision:** free-to-play, cosmetic IAP и limited rewarded advertising; без pay-to-win и без обязательной рекламы в первой сессии.
+
+## DEC-015 — Launch scope planning baseline
+
+- **Status:** APPROVED DIRECTION
+- **Decision:** 10 миссий, гольф-клуб, тренировка, отдельный гольф-режим, кастомизация, shareable results, analytics/live-config foundation.
+- **Note:** число миссий остаётся planning baseline до проверки production pipeline.
+
+## DEC-016 — Multiplayer scope
+
+- **Status:** APPROVED
+- **Decision:** real-time multiplayer не является обязательным launch feature. Асинхронные челленджи и replay sharing закладываются архитектурно.
+
+## DEC-017 — Rating and narrative language
+
+- **Status:** APPROVED
+- **Decision:** target 12+/Teen, минимум текста, визуальный юмор, без длинных реплик и реалистичной жестокости.
