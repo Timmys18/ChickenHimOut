@@ -1,8 +1,12 @@
 # Roadmap and Gates
 
-**Status:** REVIEW
+**Status:** ACTIVE
 
 ## Gate 00 — Project Constitution & Operating System
+
+### Status
+
+**ACCEPTED — 2026-07-24**
 
 ### Goal
 
@@ -18,17 +22,17 @@
 - Sprint 00 report;
 - GitHub tracker.
 
-### Exit Criteria
+### Acceptance
 
-- Product Owner подтверждает самостоятельность проекта;
-- утверждает правила управления;
-- утверждает или корректирует непереговорные требования;
-- выбирает первую vertical slice миссию;
-- отвечает на блокирующие вопросы Gate 01.
+Product Owner подтвердил самостоятельность проекта, правила управления, продуктовые рекомендации Q-001—Q-008 и The Wall как first vertical slice.
 
 ---
 
 ## Gate 01 — Game Blueprint
+
+### Status
+
+**IN PROGRESS**
 
 ### Goal
 
@@ -48,16 +52,18 @@
 - progression and economy outline;
 - visual direction brief;
 - audio direction brief;
-- technical feasibility matrix;
+- technical architecture decision;
+- performance budget;
 - production scope and risk register.
 
 ### Exit Criteria
 
 - core loop понятен без устного объяснения;
 - нет нерешённых блокирующих серых зон;
-- определены платформы, ориентация, monetization direction и launch scope;
-- утверждена первая prototype mission;
-- утверждён prototype plan.
+- утверждён plan for mechanical prototype;
+- техническая архитектура имеет доказуемый путь к mobile-first release;
+- Wall mission полностью описана как vertical slice;
+- Product Owner принимает Blueprint Package.
 
 ---
 
@@ -221,6 +227,4 @@ Gate не открывается до принятия vertical slice и product
 
 ## Current Position
 
-`Gate 00 — REVIEW`
-
-Следующий предлагаемый переход: `Gate 01 — Game Blueprint`, только после утверждения Package 00 и ответов на блокирующие вопросы.
+`Gate 01 — IN PROGRESS`
