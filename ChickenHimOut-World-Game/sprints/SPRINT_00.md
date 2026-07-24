@@ -1,7 +1,8 @@
 # Sprint 00 — Project Foundation
 
-**Status:** REVIEW  
-**Gate:** 00
+**Status:** ACCEPTED  
+**Gate:** 00  
+**Accepted by Product Owner:** 2026-07-24
 
 ## Objective
 
@@ -16,32 +17,37 @@
 - создан Decision Log;
 - создан Roadmap and Gates;
 - создан Open Questions register;
-- определён рекомендуемый first vertical slice — The Wall;
+- утверждена first vertical slice — The Wall;
 - зафиксированы обязательные визуальные, механические и управленческие требования.
+
+## Approved Product Decisions
+
+- mobile-first: iOS и Android;
+- PC/Web — development and review builds, не продуктовый ориентир;
+- landscape orientation;
+- free-to-play: cosmetic IAP + limited rewarded advertising;
+- planning baseline: 10 кампанийных миссий, хаб, тренировка, отдельный гольф-режим, кастомизация и sharing;
+- real-time multiplayer не входит в обязательный launch scope;
+- асинхронные челленджи и replay sharing предусматриваются архитектурно;
+- target rating: 12+ / Teen;
+- визуальное повествование и минимальный текст;
+- The Wall утверждена как first vertical slice.
 
 ## Not Included
 
 - production code;
-- выбор движка;
 - greybox prototype;
 - новые визуальные ассеты;
-- финальная экономика;
 - backend;
 - массовая детализация миссий.
 
 Отсутствие этих результатов является намеренным: они относятся к последующим Gate.
 
-## Acceptance Criteria
+## Acceptance Result
 
-Sprint 00 принимается, когда Product Owner:
+Все критерии Gate 00 выполнены. Разрешён переход к Gate 01 — Game Blueprint.
 
-1. подтверждает Project Constitution;
-2. подтверждает структуру Gate;
-3. утверждает или корректирует рекомендации по Q-001—Q-008;
-4. утверждает The Wall как first vertical slice либо выбирает альтернативу;
-5. разрешает переход к Gate 01.
-
-## Proposed Next Sprint
+## Next Sprint
 
 **Sprint 01 — Game Blueprint and Technical Decision Frame**
 
@@ -54,9 +60,9 @@ Planned outputs:
 - mission design template;
 - living-world model;
 - Wall vertical slice scenario v1;
-- engine and architecture research;
+- engine and architecture decision;
 - visual target brief;
-- mobile performance budget proposal;
+- mobile performance budget;
 - updated risks and decisions.
 
 ## Deviations
