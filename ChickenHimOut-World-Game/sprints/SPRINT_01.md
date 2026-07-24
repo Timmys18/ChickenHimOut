@@ -1,8 +1,9 @@
 # Sprint 01 — Game Blueprint and Technical Decision Frame
 
-**Status:** IN PROGRESS  
+**Status:** REVIEW  
 **Gate:** 01  
-**Started:** 2026-07-24
+**Started:** 2026-07-24  
+**Submitted for review:** 2026-07-24
 
 ## Objective
 
@@ -20,31 +21,44 @@
 - 12+/Teen;
 - minimal text and visual storytelling.
 
-## Deliverables
+## Completed Deliverables
 
-- Game Design Blueprint v1;
-- Input and Camera Specification;
-- Tie Interaction Specification;
-- Chaos Graph Specification;
-- Living World Specification;
-- Mission Design Framework;
-- Wall Vertical Slice Scenario v1;
-- Technical Architecture Decision;
-- Mobile Performance Budget;
-- Visual and Audio Target Briefs;
-- Risk Register;
-- Gate 02 Plan Before Build.
+- `docs/05_GATE_01_PLAN_BEFORE_BUILD.md`
+- `docs/06_GAME_BLUEPRINT_V1.md`
+- `docs/07_INPUT_AND_CAMERA_SPEC.md`
+- `docs/08_TIE_INTERACTION_SPEC.md`
+- `docs/09_CHAOS_GRAPH_SPEC.md`
+- `docs/10_LIVING_WORLD_SPEC.md`
+- `docs/11_TECHNICAL_ARCHITECTURE_DECISION.md`
+- `docs/12_MOBILE_PERFORMANCE_BUDGET.md`
+- `docs/13_MISSION_DESIGN_FRAMEWORK.md`
+- `docs/14_WALL_VERTICAL_SLICE_SCENARIO.md`
+- `docs/15_VISUAL_AND_AUDIO_TARGET_BRIEF.md`
+- `docs/16_RISK_REGISTER.md`
+- `docs/17_GATE_02_PLAN_BEFORE_BUILD.md`
 
-## Current Workstream
+## Key Recommendations
 
-1. freeze product architecture;
-2. select engine and rendering/physics strategy;
-3. specify touch input and camera;
-4. specify tie simulation and authoring constraints;
-5. specify Chaos Graph runtime and editor model;
-6. fully design The Wall;
-7. define prototype acceptance tests.
+- Unity 6.3 LTS + URP;
+- controlled PhysX with authored mission states;
+- hybrid logical/physical tie simulation;
+- contextual tactical positions without permanent joystick;
+- event-driven Chaos Graph;
+- The Wall greybox as Gate 02 prototype;
+- explicit mobile performance and simulation caps.
 
-## Branch Policy
+## Review Questions
 
-Sprint work is authored on `gate/01-game-blueprint` and submitted to `main` through a review pull request. `main` remains the last accepted project state.
+1. Accept Unity 6.3 LTS + URP as technical baseline?
+2. Accept hybrid tie model instead of fully simulated rope?
+3. Accept contextual positions and no permanent joystick?
+4. Accept The Wall scenario and its Safe/Spectacular/Absurd route structure?
+5. Accept Gate 02 prototype scope and metrics?
+
+## Deviations
+
+Gate 01 drafts were committed directly to `main` for immediate crash recovery instead of being developed on a Gate branch. Every file is explicitly marked `DRAFT` or `REVIEW`, so accepted and proposed decisions remain distinguishable. Starting with implementation, feature branches and pull requests are mandatory.
+
+## Gate Result
+
+Awaiting Product Owner decision: `ACCEPTED / REWORK / REJECTED`.
