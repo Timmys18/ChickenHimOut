@@ -4,7 +4,8 @@
 
 ## Статус
 
-**Gate 00 — Project Constitution & Operating System:** REVIEW
+**Gate 00 — ACCEPTED**  
+**Gate 01 — IN PROGRESS**
 
 ## Назначение директории
 
@@ -29,7 +30,8 @@ ChickenHimOut — международная сатирическая мобил
 - `docs/02_DECISION_LOG.md` — журнал принятых решений.
 - `docs/03_ROADMAP_AND_GATES.md` — этапы и критерии перехода.
 - `docs/04_OPEN_QUESTIONS.md` — серые зоны и вопросы на утверждение.
-- `sprints/SPRINT_00.md` — первый проектный этап.
+- `sprints/SPRINT_00.md` — принятый фундамент проекта.
+- `sprints/SPRINT_01.md` — текущий этап Game Blueprint.
 
 ## Правило наследования
 
