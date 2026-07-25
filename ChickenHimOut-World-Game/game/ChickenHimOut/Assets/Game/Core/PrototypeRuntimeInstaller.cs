@@ -31,9 +31,6 @@ namespace ChickenHimOut.WorldGame.Core
             if (overlay == null)
                 overlay = phases.gameObject.AddComponent<PrototypeOverlay>();
             overlay.Configure(phases, score, hints);
-
-            if (Object.FindFirstObjectByType<PrototypeRuntimeInstaller>() == null)
-                phases.gameObject.AddComponent<PrototypeRuntimeInstaller>();
         }
     }
 }
