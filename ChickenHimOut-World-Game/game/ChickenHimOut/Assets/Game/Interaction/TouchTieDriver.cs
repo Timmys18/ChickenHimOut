@@ -1,6 +1,6 @@
+using ChickenHimOut.Interaction;
+using ChickenHimOut.Tie;
 using ChickenHimOut.WorldGame.Input;
-using ChickenHimOut.Game.Interaction;
-using ChickenHimOut.Game.Tie;
 using UnityEngine;
 
 namespace ChickenHimOut.WorldGame.Interaction
@@ -10,22 +10,14 @@ namespace ChickenHimOut.WorldGame.Interaction
         [SerializeField] private SemanticTouchInput input;
         [SerializeField] private AnchorAcquisition acquisition;
         [SerializeField] private TieController tie;
-        [SerializeField] private Camera gameplayCamera;
-        [SerializeField] private Transform tieOrigin;
 
         private InteractionAnchor selected;
-
-        private void Awake()
-        {
-            if (gameplayCamera == null) gameplayCamera = Camera.main;
-        }
 
         private void OnEnable()
         {
             if (input == null) return;
             input.Tap += HandleTap;
             input.DragStarted += HandleDragStarted;
-            input.DragUpdated += HandleDragUpdated;
             input.DragEnded += HandleDragEnded;
         }
 
@@ -34,7 +26,6 @@ namespace ChickenHimOut.WorldGame.Interaction
             if (input == null) return;
             input.Tap -= HandleTap;
             input.DragStarted -= HandleDragStarted;
-            input.DragUpdated -= HandleDragUpdated;
             input.DragEnded -= HandleDragEnded;
         }
 
@@ -42,47 +33,30 @@ namespace ChickenHimOut.WorldGame.Interaction
         {
             if (selected != null)
             {
-                tie?.Release();
+                tie?.ReleaseTie();
                 selected = null;
                 return;
             }
 
-            selected = acquisition == null ? null : acquisition.FindBest(screenPoint, gameplayCamera);
-            if (selected != null && tieOrigin != null)
-            {
-                tie?.Attach(tieOrigin, selected.transform);
-            }
+            TryAttach(screenPoint);
         }
 
-        private void HandleDragStarted(DragSample sample)
-        {
-            selected = acquisition == null ? null : acquisition.FindBest(sample.Start, gameplayCamera);
-            if (selected != null && tieOrigin != null)
-            {
-                tie?.Attach(tieOrigin, selected.transform);
-            }
-        }
-
-        private void HandleDragUpdated(DragSample sample)
-        {
-            if (selected == null || gameplayCamera == null || tie == null) return;
-            Ray ray = gameplayCamera.ScreenPointToRay(sample.Current);
-            Plane plane = new Plane(Vector3.forward, selected.transform.position);
-            if (plane.Raycast(ray, out float distance))
-            {
-                tie.SetTargetPoint(ray.GetPoint(distance));
-            }
-        }
+        private void HandleDragStarted(DragSample sample) => TryAttach(sample.Start);
 
         private void HandleDragEnded(DragSample sample)
         {
-            if (tie == null) return;
-            if ((sample.Current - sample.Start).magnitude < 36f)
-            {
-                return;
-            }
-            tie.Release();
+            if (selected == null) return;
+            tie?.ReleaseTie();
             selected = null;
+        }
+
+        private void TryAttach(Vector2 screenPoint)
+        {
+            if (acquisition == null || tie == null) return;
+            selected = acquisition.FindBest(screenPoint, AnchorRole.Hook);
+            if (selected == null) return;
+            tie.BeginPreview(selected);
+            tie.CommitAttach();
         }
     }
 }
