@@ -18,6 +18,13 @@ namespace ChickenHimOut.WorldGame.Guidance
 
         public event Action<string, bool> HintChanged;
 
+        public void Configure(MissionPhaseController controller)
+        {
+            if (phases != null) phases.PhaseChanged -= HandlePhaseChanged;
+            phases = controller;
+            if (isActiveAndEnabled && phases != null) phases.PhaseChanged += HandlePhaseChanged;
+        }
+
         private void Awake()
         {
             lastMeaningfulActionTime = Time.unscaledTime;
@@ -38,23 +45,18 @@ namespace ChickenHimOut.WorldGame.Guidance
             }
 
             if (!visible && Time.unscaledTime - lastMeaningfulActionTime >= CurrentDelay())
-            {
                 ShowHint(HintFor(phases != null ? phases.Current : MissionPhase.Setup));
-            }
         }
 
         public void RegisterMeaningfulAction()
         {
             lastMeaningfulActionTime = Time.unscaledTime;
-            if (visible)
-            {
-                visible = false;
-                HintChanged?.Invoke(currentHint, false);
-            }
+            if (!visible) return;
+            visible = false;
+            HintChanged?.Invoke(currentHint, false);
         }
 
         private void HandlePhaseChanged(MissionPhase _, MissionPhase __) => RegisterMeaningfulAction();
-
         private float CurrentDelay() => lastMeaningfulActionTime <= 0.01f ? firstHintDelay : repeatDelay;
 
         private void ShowHint(string hint)
