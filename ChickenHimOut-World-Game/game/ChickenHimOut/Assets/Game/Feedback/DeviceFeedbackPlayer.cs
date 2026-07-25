@@ -17,12 +17,12 @@ namespace ChickenHimOut.WorldGame.Feedback
 
         private void OnEnable()
         {
-            if (bus != null) bus.Emitted += HandleFeedback;
+            if (bus != null) bus.VisualFeedbackRequested += HandleFeedback;
         }
 
         private void OnDisable()
         {
-            if (bus != null) bus.Emitted -= HandleFeedback;
+            if (bus != null) bus.VisualFeedbackRequested -= HandleFeedback;
         }
 
         private void HandleFeedback(FeedbackEvent type, float intensity)
@@ -30,10 +30,12 @@ namespace ChickenHimOut.WorldGame.Feedback
             AudioClip clip = type switch
             {
                 FeedbackEvent.Attach => attachClip,
-                FeedbackEvent.Tension => tensionClip,
+                FeedbackEvent.TensionLow => tensionClip,
+                FeedbackEvent.TensionHigh => tensionClip,
                 FeedbackEvent.FalseSuccess => successClip,
                 FeedbackEvent.Escape => successClip,
-                FeedbackEvent.Failure => failureClip,
+                FeedbackEvent.ImminentFailure => failureClip,
+                FeedbackEvent.Result => successClip,
                 _ => null
             };
 
@@ -49,7 +51,7 @@ namespace ChickenHimOut.WorldGame.Feedback
         {
 #if UNITY_ANDROID || UNITY_IOS
             Handheld.Vibrate();
-            if (type == FeedbackEvent.FalseSuccess || type == FeedbackEvent.Escape)
+            if (type == FeedbackEvent.FalseSuccess || type == FeedbackEvent.Escape || type == FeedbackEvent.Result)
             {
                 yield return new WaitForSecondsRealtime(0.12f);
                 Handheld.Vibrate();
