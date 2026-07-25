@@ -1,7 +1,12 @@
 {
   "name": "ChickenHimOut.Game",
   "rootNamespace": "ChickenHimOut",
-  "references": [],
+  "references": [
+    "Unity.InputSystem",
+    "Unity.Cinemachine",
+    "Unity.Addressables",
+    "Unity.Localization"
+  ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
