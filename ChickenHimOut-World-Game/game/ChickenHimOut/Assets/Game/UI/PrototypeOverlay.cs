@@ -18,6 +18,15 @@ namespace ChickenHimOut.WorldGame.UI
         private GUIStyle textStyle;
         private GUIStyle buttonStyle;
 
+        public void Configure(MissionPhaseController phaseController, MissionScore missionScore, ContextHintDirector hintDirector)
+        {
+            if (hints != null) hints.HintChanged -= HandleHint;
+            phases = phaseController;
+            score = missionScore;
+            hints = hintDirector;
+            if (isActiveAndEnabled && hints != null) hints.HintChanged += HandleHint;
+        }
+
         private void OnEnable()
         {
             if (hints != null) hints.HintChanged += HandleHint;
