@@ -2,6 +2,18 @@
 
 Mobile-first satirical physics game. Pull the oversized tie, launch the promise, create maximum chaos, and chicken out before accountability arrives.
 
+## AI-команда Claude + Codex
+
+Для работы над проектом без ручного переноса сообщений между нейросетями запусти файл:
+
+```text
+START_AI_TEAM.cmd
+```
+
+Он проверит и при необходимости установит Claude Code и Codex, после чего запустит Claude как руководителя разработки. Claude сможет самостоятельно поручать работу Codex, проверять изменения и возвращать замечания.
+
+Подробная человеческая инструкция: [`docs/AI_TEAM_RU.md`](docs/AI_TEAM_RU.md).
+
 ## Release candidate
 
 This repository contains the `0.9.0-rc.1` candidate for web/PWA, Android, and iOS.
@@ -35,4 +47,3 @@ The web build is written to `dist/`. Native wrappers live in `android/` and `ios
 Campaign: drag the character toward promise seals, release the tie, then tap **CHICKEN OUT!** during the best exit window.
 
 Golf: drag from the ball, release, and use **CALL AN ASSISTANT** after two missed strokes if desired.
-
