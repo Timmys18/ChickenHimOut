@@ -1,0 +1,115 @@
+name: ChickenHimOut Unity Validation
+
+on:
+  push:
+    branches:
+      - 'gate/**'
+    paths:
+      - 'ChickenHimOut-World-Game/game/ChickenHimOut/**'
+      - '.github/workflows/chickenhimout-unity.yml'
+  pull_request:
+    paths:
+      - 'ChickenHimOut-World-Game/game/ChickenHimOut/**'
+      - '.github/workflows/chickenhimout-unity.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: chickenhimout-unity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверить структуру проекта
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='ChickenHimOut-World-Game/game/ChickenHimOut'
+          test -f "$ROOT/ProjectSettings/ProjectVersion.txt"
+          grep -q '6000.5.4f1' "$ROOT/ProjectSettings/ProjectVersion.txt"
+          test -f "$ROOT/Packages/manifest.json"
+          test -d "$ROOT/Assets/Game"
+          test ! -d 'ChickenHimOut-World-Game/Assets/ChickenHimOut'
+          test -f "$ROOT/Assets/Game/Editor/WallGreyboxSceneBuilder.cs"
+          test -f "$ROOT/Assets/Game/Editor/PrototypeBuildPipeline.cs"
+          test -f "$ROOT/Assets/Game/Interaction/TouchTieDriver.cs"
+          test -f "$ROOT/Assets/Game/UI/PrototypeOverlay.cs"
+          test -f "$ROOT/Assets/Game/Guidance/ContextHintDirector.cs"
+          echo 'Структура проекта проверена.'
+
+      - name: Проверить явные ошибки в исходниках
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT='ChickenHimOut-World-Game/game/ChickenHimOut/Assets/Game'
+          ! grep -R --line-number 'tie\.Release()' "$ROOT"
+          ! grep -R --line-number 'tie\.Attach(' "$ROOT"
+          ! grep -R --line-number 'FeedbackEvent\.Tension\b' "$ROOT"
+          ! grep -R --line-number 'FeedbackEvent\.Failure\b' "$ROOT"
+          ! grep -R --line-number 'bus\.Emitted' "$ROOT"
+          echo 'Явные устаревшие вызовы не найдены.'
+
+  unity-license-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Проверить возможность сборки
+        shell: bash
+        env:
+          UNITY_LICENSE_PRESENT: ${{ secrets.UNITY_LICENSE != '' }}
+        run: |
+          if [ "$UNITY_LICENSE_PRESENT" = "true" ]; then
+            echo 'Лицензия Unity подключена. Можно запускать тесты и сборку.'
+          else
+            echo 'Лицензия Unity не подключена. Проверка структуры пройдёт, но установочный файл не будет собран.'
+          fi
+
+  unity-tests:
+    if: ${{ secrets.UNITY_LICENSE != '' }}
+    needs: repository-contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ChickenHimOut-World-Game/game/ChickenHimOut
+          unityVersion: 6000.5.4f1
+          testMode: EditMode
+          artifactsPath: artifacts/tests
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unity-test-results
+          path: artifacts/tests
+
+  android-development-build:
+    if: ${{ secrets.UNITY_LICENSE != '' }}
+    needs: unity-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ChickenHimOut-World-Game/game/ChickenHimOut
+          unityVersion: 6000.5.4f1
+          targetPlatform: Android
+          androidExportType: androidPackage
+          customParameters: -executeMethod ChickenHimOut.Game.Editor.PrototypeBuildPipeline.BuildAndroid
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chickenhimout-android-development
+          path: build/Android

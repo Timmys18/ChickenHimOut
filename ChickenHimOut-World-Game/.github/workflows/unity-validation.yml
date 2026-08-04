@@ -1,0 +1,26 @@
+name: Unity Validation
+
+on:
+  pull_request:
+    paths:
+      - 'ChickenHimOut-World-Game/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Verify pinned editor
+        run: grep -q '6000.5.4f1' ChickenHimOut-World-Game/ProjectSettings/ProjectVersion.txt
+      - name: Repository hygiene
+        run: |
+          test ! -d ChickenHimOut-World-Game/Library
+          test ! -d ChickenHimOut-World-Game/Temp
+          test ! -d ChickenHimOut-World-Game/Logs
+      - name: Unity tests placeholder
+        run: |
+          echo 'Requires UNITY_LICENSE, UNITY_EMAIL and UNITY_PASSWORD secrets.'
+          echo 'Enable game-ci/unity-test-runner when credentials are configured.'

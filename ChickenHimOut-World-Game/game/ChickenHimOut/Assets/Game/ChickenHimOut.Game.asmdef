@@ -1,0 +1,19 @@
+{
+  "name": "ChickenHimOut.Game",
+  "rootNamespace": "ChickenHimOut",
+  "references": [
+    "Unity.InputSystem",
+    "Unity.Cinemachine",
+    "Unity.Addressables",
+    "Unity.Localization"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
